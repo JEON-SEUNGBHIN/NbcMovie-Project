@@ -23,6 +23,12 @@
     margin-right: 2.5em;
 }
 
+a{
+    text-decoration: none;  
+    color: inherit; 
+
+}
+
 .title:hover{
     color: white;
     cursor: pointer;

@@ -18,8 +18,72 @@
     <footer id="footer"></footer>
     <script src="./header.js"></script>
     <script src="./footer.js"></script>
-
     <script>
+    document.addEventListener('DOMContentLoaded', function () {
+            // URL에서 검색어 추출
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchTerm = urlParams.get('query');
+
+            // 검색어가 있을 경우 top rated 영화 목록에서 검색 결과 가져오기
+            if (searchTerm) {
+                const apiKey = '66f371611b5b7314fe42cbf067b62f1c';
+                const topRatedUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`;
+
+                fetch(topRatedUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        // 가져온 top rated 영화 목록에서 검색어와 일치하는 영화 필터링
+                        const matchedMovies = data.results.filter(movie => {
+                            // 간단한 예시로 영화 제목으로 검색
+                            return movie.title.toLowerCase().includes(searchTerm);
+                        });
+
+                        // 검색 결과를 화면에 표시
+                        displaySearchResults(matchedMovies);
+                    })
+                    .catch(error => {
+                        console.error('API 호출 중 오류 발생:', error);
+                    });
+            }
+        });
+    function displaySearchResults(movies) {
+        const searchPage = document.querySelector('.search-page');
+    
+        if (!searchPage) {
+            console.error('검색 페이지 요소를 찾을 수 없습니다.');
+            return;
+        }
+    
+        searchPage.innerHTML = ''; // 이전 검색 결과 삭제
+    
+        movies.forEach(movie => {
+            const item = document.createElement('div');
+            item.classList.add('item');
+            item.dataset.id = movie.id;
+    
+            item.innerHTML = `
+                <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" id="movies-img">
+                <div class="item-body">
+                    <h3 class="movies-title">${movie.title}</h3>
+                    <h5 class="movies-content">${movie.overview}</h5>
+                    <div class="item-detail">
+                        <h4>개봉일: </h4> 
+                        <h4 id="movie-date">${movie.release_date}</h4>
+                        <i class="fa fa-star" id="scores"></i>
+                        <h5 id="movies-score">${movie.vote_average}</h5>
+                    </div>
+                </div>
+            `;
+            
+            searchPage.appendChild(item);
+            item.addEventListener('click', function(event) {
+                    const movieId = event.currentTarget.dataset.id;
+                    alert(`선택된 영화 ID: ${movieId} 입니다!`);
+                });
+        });
+    }
+    </script>
+    <!-- <script>
         document.addEventListener('DOMContentLoaded', function () {
         const urlParams = new URLSearchParams(window.location.search);
         const searchTerm = urlParams.get('query');
@@ -97,7 +161,7 @@
                 });
             });
         }
-    </script>
+    </script> -->
 
 </body>
 </html>

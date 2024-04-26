@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+
 // 검색 이벤트 핸들러 함수
 function handleSearch(event) {
     event.preventDefault(); // 제출 이벤트의 기본 동작을 중지
@@ -39,20 +40,6 @@ function handleSearch(event) {
         return;
     }
 
-    const apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${searchTerm}&page=1`;
+    // 검색어를 포함하여 search.html로 이동
     window.location.href = `search.html?query=${encodeURIComponent(searchTerm)}`;
-
-    fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
-            if (!data.results || data.results.length === 0) {
-                alert('검색 결과가 없습니다.');
-                return;
-            }
-            // 검색 결과를 표시하는 함수 호출
-            displaySearchResults(data.results);
-        })
-        .catch(error => {
-            console.error('에러 파싱 데이터:', error);
-        });
-} 
+}
