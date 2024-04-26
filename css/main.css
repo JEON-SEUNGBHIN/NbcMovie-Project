@@ -63,6 +63,10 @@ body{
     background-color: white;
 }
 
+.item:hover{
+    cursor: pointer;
+}
+
 .movies-title{
     font-size: 1.5rem;
 }
@@ -97,7 +101,7 @@ body{
     padding-right: 0.5rem;
 }
 
-.search-body{
+.search-page{
     width: 70%;
     height: 50%;
     align-items: center;

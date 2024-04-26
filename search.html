@@ -5,19 +5,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./css/main.css">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-    <title>영화 목록 페이지</title>
+    <title>영화 검색 결과 페이지</title>
 </head>
 <body>
     <header id="header"></header>
         <div class="main-page">
         <h3 class="main-page-title">검색 결과</h3>
             <div class="search-page">
-                <!-- 검색 결과 나오는 부분     -->
+                <!-- 검색 결과 나오는 부분 -->
             </div> 
         </div>
     <footer id="footer"></footer>
-    <script src="./movie.js"></script>
     <script src="./header.js"></script>
     <script src="./footer.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchTerm = urlParams.get('query');
+        
+        if (!searchTerm) {
+            console.error('검색어가 없습니다.');
+            return;
+        }
+
+        const apiKey = '66f371611b5b7314fe42cbf067b62f1c';
+        const apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${encodeURIComponent(searchTerm)}&page=1`;
+
+        fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('API 호출 중 문제가 발생했습니다.');
+                }
+                return response.json();
+            })
+            .then(data => {
+                const searchPage = document.querySelector('.search-page');
+                if (!searchPage) {
+                    console.error('검색 페이지 요소를 찾을 수 없습니다.');
+                    return;
+                }
+
+                searchPage.innerHTML = ''; // 기존의 검색 결과 삭제
+
+                if (!data.results || data.results.length === 0) {
+                    console.log('검색 결과가 없습니다.');
+                    return;
+                }
+
+                // 검색 결과를 표시하는 함수 호출
+                displaySearchResults(data.results);
+            })
+            .catch(error => {
+                console.error('API 호출 오류:', error);
+            });
+    });
+
+        // 검색 결과를 표시하는 함수 정의
+        function displaySearchResults(movies) {
+            const searchPage = document.querySelector('.search-page');
+        
+            if (!searchPage) {
+                console.error('검색 페이지 요소를 찾을 수 없습니다.');
+                return;
+            }
+            searchPage.innerHTML = ''; // 기존의 검색 결과 삭제
+        
+            movies.forEach((movie) => {
+                const item = document.createElement('div');
+                item.classList.add('item');
+                item.dataset.id = movie.id;
+        
+                item.innerHTML = `
+                    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" id="movies-img">
+                    <div class="item-body">
+                        <h3 class="movies-title">${movie.title}</h3>
+                        <h5 class="movies-content">${movie.overview}</h5>
+                        <div class="item-detail">
+                            <h4>개봉일: </h4> 
+                            <h4 id="movie-date">${movie.release_date}</h4>
+                            <i class="fa fa-star" id="scores"></i>
+                            <h5 id="movies-score">${movie.vote_average}</h5>
+                        </div>
+                    </div>
+                `;
+                searchPage.appendChild(item);
+        
+                item.addEventListener('click', function(event) {
+                    const movieId = event.currentTarget.dataset.id;
+                    alert(`선택된 영화 ID: ${movieId} 입니다!`);
+                });
+            });
+        }
+    </script>
+
 </body>
 </html>
