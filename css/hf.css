@@ -1,19 +1,17 @@
 /* header css */
 .header-page{
     background-color: #0E132A;
-    width: 100vw;
-    margin: 0;
-    justify-content: center;
-    display: flex;
+    width: 100%;
+    padding: 10px; 
+    box-sizing: border-box;
 }
 
 .hd-body{
-    width: 70%;
-    height: 60px;
+    max-width: 1300px; 
+    margin: 0 auto; 
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 1rem;
+    justify-content: space-between;
 }
 
 .title{ 
@@ -56,31 +54,30 @@ a{
 }
 
 /* 검색 css */
-.searchForm{
+.searchForm {
     width: 100%;
-    height: 20%;
-    margin-right: 10%;
     position: relative;
 }
 
-#search{
-    width: 100%;
-    height: 20%;
+#search {
+    width: calc(95% - 40px); /* 버튼 너비를 고려하여 입력란 너비 조정 */
     padding: 10px;
     border-radius: 1em;
 }
 
-.search-icon{
+.search-icon {
     color: gray;
     position: absolute;
     top: 50%;
-    right: 0;
+    right: 10%;
     transform: translateY(-50%);
     cursor: pointer;
     border: 0;
     background-color: transparent;
-    
+    width: 40px; /* 버튼의 너비 지정 */
+    height: 100%; /* 버튼의 높이를 입력란의 높이와 동일하게 설정 */
 }
+
 
 #person-icon{
     color: white;
@@ -90,20 +87,18 @@ a{
 /* footer css */
 .footer-page{
     background-color: #0E132A;
-    width: 100vw;
-    margin-top: 500px;
-    justify-content: center;
-    display: flex;
-    bottom: 0;
+    width: 100%;
+    padding: 10px; 
+    box-sizing: border-box;
 }
 
 .ft-body{
-    width: 80%;
-    height: 100%;
+    max-width: 1200px; /* 푸터의 최대 너비 지정 */
+    margin: 0 auto; /* 가운데 정렬 */
     display: flex;
+    flex-wrap: wrap; /* 요소가 차례대로 배치되고 너비가 부족할 경우 다음 줄로 이동합니다. */
+    justify-content: space-between; /* 요소 사이의 여백을 최대화하여 푸터 내부 공간을 채웁니다. */
     align-items: center;
-    justify-content: center;
-    padding: 1rem;
 }
 
 
@@ -145,12 +140,13 @@ a{
 }
 
 .foot-detail3{
-    margin-bottom: 90px;
+    margin: 3rem;
 }
 
 .foot-btn{
     background-color: white;
     border-radius: 15px;
+    
 }
 
 .foot-btn img{

@@ -20,6 +20,13 @@ function fetchHeader() {
 document.addEventListener('DOMContentLoaded', function () {
     fetchHeader();
 
+    window.addEventListener('DOMContentLoaded', (event) => {
+        const searchInput = document.getElementById('search');
+        if (searchInput) {
+            searchInput.focus(); // 검색 입력란에 포커스
+        }
+    });
+
     // 검색 이벤트 리스너 추가
     const searchForm = document.querySelector('.searchForm');
     searchForm.addEventListener('submit', handleSearch);
