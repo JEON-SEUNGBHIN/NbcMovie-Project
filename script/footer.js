@@ -1,11 +1,4 @@
-fetch('./footer.html')
-    .then(response => response.text())
-    .then(html => {
-        document.getElementById('footer').innerHTML = html;
-    })
-    .catch(error => console.error('Error fetching footer:', error));
-
-    // 푸터를 가져오는 함수 정의
+// 푸터를 가져오는 함수 정의
 function fetchFooter() {
     // 캐시된 푸터가 있는지 확인
     const cachedFooter = localStorage.getItem('cachedFooter');

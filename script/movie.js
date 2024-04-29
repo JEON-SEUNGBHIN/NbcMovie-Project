@@ -33,13 +33,13 @@ function displayMovies(movies) {
             <div class="item-body">
                 <h2>${index + 1}</h2>
                 <h3 class="movies-title">${movie.title}</h3>
-                <h5 class="movies-content">${movie.overview}</h5>
                 <div class="item-detail">
                     <h4>개봉일: </h4> 
                     <h4 id="movie-date">${movie.release_date}</h4>
                     <i class="fa fa-star" id="scores"></i>
                     <h5 id="movies-score">${movie.vote_average}</h5>
                 </div>
+                <h5 class="movies-content">${movie.overview}</h5>
             </div>
         `;
         mainBody.appendChild(item);
