@@ -1,6 +1,5 @@
-// 헤더를 가져오는 함수 정의
 function fetchHeader() {
-    // 캐시된 헤더가 있는지 확인
+    // 캐시된 푸터가 있는지 확인
     const cachedHeader = localStorage.getItem('cachedHeader');
     if (cachedHeader) {
         document.getElementById('header').innerHTML = cachedHeader;
@@ -10,7 +9,7 @@ function fetchHeader() {
             .then(response => response.text())
             .then(html => {
                 document.getElementById('header').innerHTML = html;
-                localStorage.setItem('cachedHeader', html); // 헤더를 캐시에 저장
+                localStorage.setItem('cachedHeader', html); // 푸터를 캐시에 저장
             })
             .catch(error => console.error('Error fetching header:', error));
     }

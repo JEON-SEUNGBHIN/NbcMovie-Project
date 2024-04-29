@@ -16,7 +16,7 @@ function fetchFooter() {
     }
 }
 
-// 페이지 로드 시 헤더를 가져오기
+// 페이지 로드 시 푸터를 가져오기
 document.addEventListener('DOMContentLoaded', function () {
     fetchFooter();
 });
