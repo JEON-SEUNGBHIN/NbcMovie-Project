@@ -5,7 +5,7 @@ function fetchHeader() {
         document.getElementById('header').innerHTML = cachedHeader;
     } else {
         // 헤더를 가져와서 캐시에 저장
-        fetch('../header.html')
+        fetch('../script/header.html')
             .then(response => response.text())
             .then(html => {
                 document.getElementById('header').innerHTML = html;
