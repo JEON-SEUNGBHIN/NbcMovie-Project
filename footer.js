@@ -5,8 +5,8 @@ function fetchFooter() {
     if (cachedFooter) {
         document.getElementById('footer').innerHTML = cachedFooter;
     } else {
-        // 헤더를 가져와서 캐시에 저장
-        fetch('./footer.html')
+        // 푸터를 가져와서 캐시에 저장
+        fetch('../footer.html')
             .then(response => response.text())
             .then(html => {
                 document.getElementById('footer').innerHTML = html;
