@@ -101,7 +101,7 @@ body{
     align-items: center;
     justify-content: center;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 3개의 열을 동일한 크기로 설정 */
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* 3개의 열을 동일한 크기로 설정 */
     grid-gap: 20px;
 }
 

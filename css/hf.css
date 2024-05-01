@@ -2,13 +2,13 @@
 .header-page{
     background-color: #0E132A;
     width: 100%;
-    padding: 10px; 
-    box-sizing: border-box;
+    margin: 0;
 }
 
 .hd-body{
     max-width: 1300px; 
     margin: 0 auto; 
+    padding: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -96,8 +96,8 @@ a{
     max-width: 1200px; /* 푸터의 최대 너비 지정 */
     margin: 0 auto; /* 가운데 정렬 */
     display: flex;
-    flex-wrap: wrap; /* 요소가 차례대로 배치되고 너비가 부족할 경우 다음 줄로 이동합니다. */
-    justify-content: space-between; /* 요소 사이의 여백을 최대화하여 푸터 내부 공간을 채웁니다. */
+    flex-wrap: wrap; /* 요소가 차례대로 배치되고 너비가 부족할 경우 다음 줄로 이동. */
+    justify-content: space-between; /* 요소 사이의 여백을 최대화하여 푸터 내부 공간을 채움. */
     align-items: center;
 }
 

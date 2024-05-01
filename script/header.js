@@ -22,7 +22,7 @@ function handleSearch(event) {
     console.log("Search Term:", searchTerm);
 
     if (searchTerm === '') {
-        alert('검색어를 입력하세요!');
+      alert('검색어를 입력하세요!');
         return;
     }
     // 검색어를 포함하여 search.html로 이동
